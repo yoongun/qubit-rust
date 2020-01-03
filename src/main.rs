@@ -9,6 +9,8 @@ fn main() {
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
     fn test_init_qubit() {
 	let qubit = Qubit{};
