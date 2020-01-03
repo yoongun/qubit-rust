@@ -4,7 +4,8 @@ struct Qubit {
 }
 
 impl Default for Qubit {
-    fn default() -> self {
+    fn default() -> Self {
+	return Qubit{theta: 0.0, phi: 0.0};
     }	
 }
 
@@ -18,7 +19,7 @@ mod tests {
 
     #[test]
     fn test_init_qubit() {
-	let qubit = Qubit{};
+	let qubit: Qubit = Default::default();
 	assert_eq!(qubit.theta, 0.0);
 	assert_eq!(qubit.phi, 0.0);
     }
