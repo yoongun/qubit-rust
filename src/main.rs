@@ -3,6 +3,11 @@ struct Qubit {
     phi: f64
 }
 
+impl Default for Qubit {
+    fn default() -> self {
+    }	
+}
+
 fn main() {
     println!("Hello, world!");
 }
