@@ -29,7 +29,12 @@ impl Qubit {
 }
 
 fn main() {
-    println!("Hello, world!");
+    for _n in 0..1000 {
+	let mut qubit = Qubit{ theta: f64::consts::PI / 2.0, phi: 0.0 };
+	let result = Qubit::measure(&mut qubit);
+	print!("{}", result);
+    }
+    println!("");
 }
 
 #[cfg(test)]
