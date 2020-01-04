@@ -1,6 +1,7 @@
 extern crate rand;
 
 use rand::Rng;
+use std::f64;
 
 struct Qubit {
     theta: f64,
@@ -15,7 +16,10 @@ impl Default for Qubit {
 
 impl Qubit {
     fn measure(qubit: Qubit) -> i32 {
-	if qubit.theta == 0.0 {
+	let mut rng = rand::thread_rng();
+	let rn = rng.gen::<f64>();
+
+	if rn < (qubit.theta / 2.0).cos().powf(2.0) {
 	    return 0
 	}
 	return 1
@@ -48,7 +52,7 @@ mod tests {
 
     #[test]
     fn test_measure_configured_as_one_qubit() {
-	let qubit = Qubit{ theta: std::f64::consts::PI, phi: 0.0 };
+	let qubit = Qubit{ theta: f64::consts::PI, phi: 0.0 };
 
 	let want = 1;
 	let got = Qubit::measure(qubit);
