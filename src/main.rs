@@ -11,7 +11,10 @@ impl Default for Qubit {
 
 impl Qubit {
     fn measure(qubit: Qubit) -> i32 {
-	return 0
+	if qubit.theta == 0.0 {
+	    return 0
+	}
+	return 1
     }
 }
 
@@ -40,7 +43,11 @@ mod tests {
     }
 
     #[test]
-    fn test_measure_configured_qubit() {
+    fn test_measure_configured_as_one_qubit() {
+	let qubit = Qubit{ theta: std::f64::consts::PI, phi: 0.0 };
 
+	let want = 1;
+	let got = Qubit::measure(qubit);
+	assert_eq!(got, want);
     }
 }
