@@ -1,3 +1,7 @@
+extern crate rand;
+
+use rand::Rng;
+
 struct Qubit {
     theta: f64,
     phi: f64
@@ -5,7 +9,7 @@ struct Qubit {
 
 impl Default for Qubit {
     fn default() -> Self {
-	return Qubit{theta: 0.0, phi: 0.0};
+	return Qubit{ theta: 0.0, phi: 0.0 };
     }	
 }
 
