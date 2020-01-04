@@ -28,8 +28,8 @@ mod tests {
     fn test_neasure_default_qubit() {
 	let qubit: Qubit = Default::default();
 
-	want = 0
-	got = qubit.measure();
+	let want = 0;
+	let got = qubit.measure();
 	assert_eq!(got, want);
     }
 
