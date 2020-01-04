@@ -15,7 +15,7 @@ impl Default for Qubit {
 }
 
 impl Qubit {
-    fn measure(qubit: Qubit) -> i32 {
+    fn measure(qubit: &Qubit) -> i32 {
 	let mut rng = rand::thread_rng();
 	let rn = rng.gen::<f64>();
 
@@ -46,7 +46,7 @@ mod tests {
 	let qubit: Qubit = Default::default();
 
 	let want = 0;
-	let got = Qubit::measure(qubit);
+	let got = Qubit::measure(&qubit);
 	assert_eq!(got, want);
     }
 
@@ -55,7 +55,19 @@ mod tests {
 	let qubit = Qubit{ theta: f64::consts::PI, phi: 0.0 };
 
 	let want = 1;
-	let got = Qubit::measure(qubit);
+	let got = Qubit::measure(&qubit);
 	assert_eq!(got, want);
+    }
+
+    #[test]
+    fn test_collapes_of_state() {
+	let qubit = Qubit{ theta: f64::consts::PI / 2.0, phi: 0.0 };
+
+	let want = Qubit::measure(&qubit);
+
+	for n in 0..100 {
+	    let got = Qubit::measure(&qubit);
+	    assert_eq!(got, want);
+	}
     }
 }
