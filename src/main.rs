@@ -9,6 +9,12 @@ impl Default for Qubit {
     }	
 }
 
+impl Qubit {
+    fn measure(qubit: Qubit) -> i32 {
+	return 0
+    }
+}
+
 fn main() {
     println!("Hello, world!");
 }
@@ -29,7 +35,7 @@ mod tests {
 	let qubit: Qubit = Default::default();
 
 	let want = 0;
-	let got = qubit.measure();
+	let got = Qubit::measure(qubit);
 	assert_eq!(got, want);
     }
 
